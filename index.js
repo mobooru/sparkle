@@ -1,7 +1,9 @@
 import Hover from './Components/Hover'
 import Card from './Components/Card'
+import AnimatedRouter from './Components/AnimatedRouter'
 
-export default {
+export {
   Hover,
-  Card
+  Card,
+  AnimatedRouter
 }

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/styles/hljs'
 
-import Card from 'Generic/Card'
+import { Card } from 'Sparkle'
 
 class DemoCard extends Component {
   render () {

@@ -8,7 +8,7 @@ export const shadow = {
 }
 
 export const card = {
-  padding: 12,
+  padding: '12px 18px',
   maxWidth: 700,
   width: 'calc(100vw - 16px)',
   borderRadius: 12,

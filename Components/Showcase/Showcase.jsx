@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Connector from 'Connector'
 
-import Hover from 'Generic/Hover'
+import { Hover } from 'Sparkle'
 
 import * as styles from './styles'
 
@@ -19,6 +20,7 @@ class UIShowcase extends Component {
           </div>
           <HoverShowcase />
           <CardShowcase />
+          <AnimatedRouterShowcase />
         </Scroller>
       </div>
     )
@@ -30,9 +32,9 @@ class HoverShowcase extends Component {
     const style = { background: '#f16a6a', padding: 12, borderRadius: 6, hover: { background: '#72f16a' } }
     return (
       <DemoCard
-        title={'Generic/Hover'}
+        title={'Hover'}
         description={'Changes style on mouse enter / leave.'}
-        demoCode={`import Hover from 'Generic/Hover'
+        demoCode={`import { Hover } from 'Sparkle'
 render () {
   const style = { background: '#f16a6a', hover: { background: '#72f16a' } }
   return <Hover style={style}>Hello</Hover>
@@ -47,11 +49,33 @@ class CardShowcase extends Component {
   render () {
     return (
       <DemoCard
-        title={'Generic/Card'}
+        title={'Card'}
         description={'This card but without content.'}
-        demoCode={`import Card from 'Generic/Card'
+        demoCode={`import { Card } from 'Sparkle'
 render () {
   return <Card title='Hello World'>Card content goes here.</Card>
+}`}
+      />
+    )
+  }
+}
+
+class AnimatedRouterShowcase extends Component {
+  render () {
+    const style = { background: '#f2f2f2', padding: 12, borderRadius: 6, display: 'block', cursor: 'pointer', hover: { background: '#eee' } }
+    return (
+      <DemoCard
+        title={'AnimatedRouter'}
+        description={'React router + React transition group.'}
+        demoComponent={<Link to='/'><Hover style={style}>Go home.</Hover></Link>}
+        demoCode={`import { AnimatedRouter } from 'Sparkle'
+render () {
+  return <AnimatedRouter
+    routes={[
+      { path: '/', exact: true, component: <p>Home, <Link to='/outside'>Go outside.</Link></p> },
+      { path: '/outside', component: <p>Not Home, <Link to='/'>Go home.</Link></p> }
+    ]}
+  />
 }`}
       />
     )
