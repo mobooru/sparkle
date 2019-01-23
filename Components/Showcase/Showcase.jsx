@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Connector from 'Connector'
 
-import Hover from 'Generic/Hover'
+import { Hover } from 'Sparkle'
 
 import * as styles from './styles'
 
@@ -30,9 +30,9 @@ class HoverShowcase extends Component {
     const style = { background: '#f16a6a', padding: 12, borderRadius: 6, hover: { background: '#72f16a' } }
     return (
       <DemoCard
-        title={'Generic/Hover'}
+        title={'Hover'}
         description={'Changes style on mouse enter / leave.'}
-        demoCode={`import Hover from 'Generic/Hover'
+        demoCode={`import { Hover } from 'Sparkle'
 render () {
   const style = { background: '#f16a6a', hover: { background: '#72f16a' } }
   return <Hover style={style}>Hello</Hover>
@@ -47,9 +47,9 @@ class CardShowcase extends Component {
   render () {
     return (
       <DemoCard
-        title={'Generic/Card'}
+        title={'Card'}
         description={'This card but without content.'}
-        demoCode={`import Card from 'Generic/Card'
+        demoCode={`import { Card } from 'Sparkle'
 render () {
   return <Card title='Hello World'>Card content goes here.</Card>
 }`}
