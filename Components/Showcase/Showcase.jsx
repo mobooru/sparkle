@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Connector } from 'Diluter'
 
-import { Hover } from 'Sparkle'
+import { Hover, Image } from 'Sparkle'
 
 import * as styles from './styles'
 
@@ -20,6 +20,7 @@ class UIShowcase extends Component {
           </div>
           <HoverShowcase />
           <CardShowcase />
+          <ImageShowcase />
           <AnimatedRouterShowcase />
         </Scroller>
       </div>
@@ -54,6 +55,52 @@ class CardShowcase extends Component {
         demoCode={`import { Card } from 'Sparkle'
 render () {
   return <Card title='Hello World'>Card content goes here.</Card>
+}`}
+      />
+    )
+  }
+}
+
+class ImageShowcase extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { load: false }
+
+    this.load = this.load.bind(this)
+  }
+
+  load () {
+    this.setState({ load: true })
+  }
+
+  render () {
+    return (
+      <DemoCard
+        title={'Image'}
+        description={'Displays a low-res thumbnail while loading the full image.'}
+        demoComponent={<div style={{ display: 'flex' }}>
+          <Image
+            src={this.state.load && `https://mobooru.ams3.cdn.digitaloceanspaces.com/samples/79/c2/79c23a6728d396f45004818c581364d4.jpg`}
+            thumbnail={`https://mobooru.ams3.digitaloceanspaces.com/thumbnails/79/c2/79c23a6728d396f45004818c581364d4.jpg`}
+            blur={12}
+            scaleIn={1.2}
+            transitionSpeed={400}
+            style={{ height: 150, width: 150, cursor: 'pointer' }}
+            onClick={this.load}
+          >
+            <p style={{ zIndex: 10, textAlign: 'center', position: 'relative', lineHeight: '150px', margin: 0, color: `rgba(0,0,0,${this.state.load ? 0 : 0.66})` }}>Click to load</p>
+          </Image>
+        </div>}
+        demoCode={`import { Image } from 'Sparkle'
+render () {
+  return <Image
+    src={'https://mobooru.ams3.cdn.digitaloceanspaces.com/samples/79/c2/79c23a6728d396f45004818c581364d4.jpg'}
+    thumbnail={'https://mobooru.ams3.digitaloceanspaces.com/thumbnails/79/c2/79c23a6728d396f45004818c581364d4.jpg'}
+    blur={12}
+    scaleIn={1.2}
+    transitionSpeed={400}
+    style={{ height: 150, width: 150 }}
+  />
 }`}
       />
     )

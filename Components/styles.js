@@ -20,3 +20,21 @@ export const card = {
     margin: '6px 0px'
   }
 }
+
+export const image = {
+  position: 'relative',
+  overflow: 'hidden',
+  image: (contain, blur, scaleIn, transitionSpeed) => ({
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    objectFit: contain ? 'contain' : 'cover',
+    filter: blur > 0 && `blur(${blur}px)`,
+    transform: scaleIn && `scale(${scaleIn})`,
+    transition: transitionSpeed > 0 ? `opacity ${transitionSpeed}ms, filter ${transitionSpeed}ms, transform ${transitionSpeed}ms` : 'none'
+  }),
+  loaded: {
+    filter: `blur(0px)`,
+    transform: `scale(1)`
+  }
+}
