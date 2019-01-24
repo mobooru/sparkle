@@ -5,6 +5,7 @@ import { Connector } from 'Diluter'
 import { Hover, Image } from 'Sparkle'
 
 import * as styles from './styles'
+import * as sstyles from '../styles'
 
 import Scroller from './Scroller'
 import DemoCard from './DemoCard'
@@ -85,7 +86,7 @@ class ImageShowcase extends Component {
             blur={12}
             scaleIn={1.2}
             transitionSpeed={400}
-            style={{ height: 150, width: 150, cursor: 'pointer' }}
+            style={{ height: 150, width: 150, borderRadius: 6, cursor: 'pointer', ...sstyles.shadow.deep }}
             onClick={this.load}
           >
             <p style={{ zIndex: 10, textAlign: 'center', position: 'relative', lineHeight: '150px', margin: 0, color: `rgba(0,0,0,${this.state.load ? 0 : 0.66})` }}>Click to load</p>
@@ -99,7 +100,7 @@ render () {
     blur={12}
     scaleIn={1.2}
     transitionSpeed={400}
-    style={{ height: 150, width: 150 }}
+    style={{ height: 150, width: 150, borderRadius: 6 }}
   />
 }`}
       />
