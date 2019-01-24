@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Connector from 'Connector'
+import { Connector } from 'Diluter'
 
 import { Hover } from 'Sparkle'
 
