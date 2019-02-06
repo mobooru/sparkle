@@ -10,7 +10,7 @@ export const shadow = {
 export const card = {
   padding: '12px 18px',
   maxWidth: 700,
-  width: 'calc(100vw - 16px)',
+  width: 'calc(100vw - 36px)',
   borderRadius: 12,
   marginLeft: 'auto',
   marginRight: 'auto',
@@ -30,11 +30,28 @@ export const image = {
     width: '100%',
     objectFit: contain ? 'contain' : 'cover',
     filter: blur > 0 && `blur(${blur}px)`,
-    transform: scaleIn && `scale(${scaleIn})`,
+    transform: scaleIn && `scale(${scaleIn}) translateZ(0px)`,
+    willChange: 'opacity, filter, transform',
     transition: transitionSpeed > 0 ? `opacity ${transitionSpeed}ms, filter ${transitionSpeed}ms, transform ${transitionSpeed}ms` : 'none'
   }),
   loaded: {
     filter: `blur(0px)`,
     transform: `scale(1)`
+  }
+}
+
+export const particleField = {
+  height: '100%',
+  width: '100%',
+  position: 'relative',
+  canvas: {
+    position: 'absolute'
+  }
+}
+
+export const tiltable = {
+  container: {
+    transform: 'perspective(600px)',
+    transformStyle: 'preserve-3d'
   }
 }
