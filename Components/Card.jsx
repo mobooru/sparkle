@@ -5,7 +5,7 @@ import { shadow, card } from './styles'
 class Card extends Component {
   render () {
     return (
-      <div style={{ ...card, ...shadow.deep }}>
+      <div style={{ ...card, ...shadow.deep, ...this.props.style }}>
         <h1 style={card.title}>{this.props.title}</h1>
         {this.props.children}
       </div>

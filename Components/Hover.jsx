@@ -11,16 +11,20 @@ class Hover extends Component {
 
   mouseEnter (e) {
     this.setState({ hover: true })
+    this.props.update && this.props.update(true)
   }
 
   mouseLeave (e) {
     this.setState({ hover: false })
+    this.props.update && this.props.update(false)
   }
 
   render () {
     return (
       <div
-        style={{ ...this.props.style, ...(this.state.hover && this.props.style.hover) }}
+        {...this.props.props}
+        onClick={this.props.onClick}
+        style={{ ...this.props.style || {}, ...(this.state.hover && (this.props.style || {}).hover) }}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
       >

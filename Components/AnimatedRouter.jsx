@@ -22,6 +22,8 @@ const defaultRouteStyle = `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    -webkit-transition: opacity 250ms ease-out, transform 250ms ease-out;
+    -moz-transition: none;
     background: #fff; }
 
   .route-enter {
@@ -32,7 +34,8 @@ const defaultRouteStyle = `
   .route-enter.route-enter-active {
     opacity: 1;
     transform: scale(1);
-    transition: opacity 150ms ease-in, transform 150ms ease-in; }
+    -webkit-transition: opacity 250ms ease-out, transform 250ms ease-out;
+    -moz-transition: none; }
 
   .route-exit {
     opacity: 1;
@@ -42,13 +45,15 @@ const defaultRouteStyle = `
   .route-exit.route-exit-active {
     opacity: 0;
     transform: scale(0.9);
-    transition: opacity 150ms ease-out, transform 150ms ease-out; }
+    -webkit-transition: opacity 250ms ease-in, transform 250ms ease-in;
+    -moz-transition: none; }
 `
 
 class AnimatedRouter extends Component {
   componentWillMount () {
   }
   render () {
+    console.log(this.props.children)
     return (
       <div>
         <style>{this.props.routerStyle || defaultRouteStyle}</style>
@@ -56,6 +61,7 @@ class AnimatedRouter extends Component {
           <Route
             render={({ location }) => (
               <TransitionGroup>
+                {this.props.statics && this.props.statics.map(child => <Route component={child} />)}
                 <CSSTransition
                   key={location.key}
                   classNames='route'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Connector } from 'Diluter'
 
-import { Hover, Image } from 'Sparkle'
+import { Hover, Image, ParticleField, Tiltable } from 'Sparkle'
 
 import * as styles from './styles'
 import * as sstyles from '../styles'
@@ -23,6 +23,8 @@ class UIShowcase extends Component {
           <CardShowcase />
           <ImageShowcase />
           <AnimatedRouterShowcase />
+          <ParticleFieldShowcase />
+          <TiltableShowcase />
         </Scroller>
       </div>
     )
@@ -79,7 +81,7 @@ class ImageShowcase extends Component {
       <DemoCard
         title={'Image'}
         description={'Displays a low-res thumbnail while loading the full image.'}
-        demoComponent={<div style={{ display: 'flex' }}>
+        demoComponent={<div style={{ display: 'flex' }} onClick={this.load}>
           <Image
             src={this.state.load && `https://mobooru.ams3.cdn.digitaloceanspaces.com/samples/79/c2/79c23a6728d396f45004818c581364d4.jpg`}
             thumbnail={`https://mobooru.ams3.digitaloceanspaces.com/thumbnails/79/c2/79c23a6728d396f45004818c581364d4.jpg`}
@@ -87,7 +89,6 @@ class ImageShowcase extends Component {
             scaleIn={1.2}
             transitionSpeed={400}
             style={{ height: 150, width: 150, borderRadius: 6, cursor: 'pointer', ...sstyles.shadow.deep }}
-            onClick={this.load}
           >
             <p style={{ zIndex: 10, textAlign: 'center', position: 'relative', lineHeight: '150px', margin: 0, color: `rgba(0,0,0,${this.state.load ? 0 : 0.66})` }}>Click to load</p>
           </Image>
@@ -124,6 +125,40 @@ render () {
       { path: '/outside', component: <p>Not Home, <Link to='/'>Go home.</Link></p> }
     ]}
   />
+}`}
+      />
+    )
+  }
+}
+
+class ParticleFieldShowcase extends Component {
+  render () {
+    return (
+      <DemoCard
+        title={'ParticleField'}
+        description={'React router + React transition group.'}
+        demoComponent={<ParticleField background={'#161617'} height={200} fps={24} style={{ borderRadius: 6 }} />}
+        demoCode={`import { ParticleField } from 'Sparkle'
+render () {
+  return <ParticleField background={'#161617'} height={200} fps={24} />
+}`}
+      />
+    )
+  }
+}
+
+class TiltableShowcase extends Component {
+  render () {
+    return (
+      <DemoCard
+        title={'Tiltable'}
+        description={'Follows your mouse.'}
+        demoComponent={<Tiltable style={{ height: 150, width: 150 }} itemStyle={{ borderRadius: 6, overflow: 'hidden' }}><ParticleField background={'linear-gradient(to right top, rgb(120, 70, 234), rgb(36, 135, 248)) rgb(81, 100, 240)'} color={'rgba(255,255,255,0.33)'} chance={2000} height={150} width={150} /></Tiltable>}
+        demoCode={`import { Tiltable, ParticleField } from 'Sparkle'
+render () {
+  return <Tiltable style={{ height: 150, width: 150 }} itemStyle={{ borderRadius: 6, overflow: 'hidden' }}>
+    <ParticleField background={'#161617'} chance={1000} height={150} width={150} />
+  </Tiltable>
 }`}
       />
     )

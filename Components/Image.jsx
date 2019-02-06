@@ -20,16 +20,16 @@ class Image extends Component {
     const imageStyle = styles.image.image(this.props.contain === true, this.props.blur, this.props.scaleIn, this.props.transitionSpeed)
     const loadedStyle = styles.image.loaded
     return (
-      <div {...this.props} style={{ ...styles.image, ...(this.props.style || {}) }}>
+      <div style={{ ...styles.image, ...(this.props.style || {}) }}>
         <img style={{
           ...imageStyle,
           ...(this.state.loaded && loadedStyle)
-        }} src={this.props.src} onLoad={this.onLoad} />
+        }} src={this.props.src || ''} onLoad={this.onLoad} />
         <img style={{
           ...imageStyle,
           ...(this.state.loaded && loadedStyle),
           ...{ opacity: (this.state.loaded ? 0 : 1) }
-        }} src={this.props.thumbnail} />
+        }} src={this.props.thumbnail || ''} />
         {this.props.children}
       </div>
     )
