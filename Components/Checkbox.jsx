@@ -72,7 +72,7 @@ class Checkbox extends Component {
         </style>
         <label className='_sparkle_checkbox_container' style={this.props.style}>
           {this.props.children}
-          <input ref='input' type='checkbox' onChange={this.props.onChange || (() => {})} />
+          <input ref='input' type='checkbox' checked={this.props.checked} onChange={this.props.onChange || (() => {})} />
           <span className='_sparkle_checkbox' />
         </label>
       </div>

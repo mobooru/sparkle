@@ -1,16 +1,20 @@
 export const shadow = {
-  boxShadow: '0px 1px 9px 0px rgba(0, 0, 0, 0.06)',
-  hover: { boxShadow: '0px 3px 12px 0px rgba(0, 0, 0, 0.1), 0px 1px 6px 0px rgba(0, 0, 0, 0.06)' },
+  border: '1px solid rgb(245, 245, 245)',
+  hover: { border: '1px solid rgb(238, 238, 238)' },
   deep: {
-    boxShadow: '0px 1px 12px 0px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgb(238, 238, 238)',
     hover: {}
+  },
+  light: {
+    border: '1px solid rgb(245, 245, 245)',
+    hover: { border: '1px solid rgb(238, 238, 238)' }
   }
 }
 
 export const card = {
   padding: '12px 18px',
   maxWidth: 700,
-  width: 'calc(100vw - 36px)',
+  width: 'calc(100vw - 58px)',
   borderRadius: 12,
   marginLeft: 'auto',
   marginRight: 'auto',
@@ -28,6 +32,7 @@ export const image = {
     position: 'absolute',
     height: '100%',
     width: '100%',
+    border: 'none',
     objectFit: contain ? 'contain' : 'cover',
     filter: blur > 0 && `blur(${blur}px)`,
     transform: scaleIn && `scale(${scaleIn}) translateZ(0px)`,
@@ -54,4 +59,54 @@ export const tiltable = {
     transform: 'perspective(600px)',
     transformStyle: 'preserve-3d'
   }
+}
+
+export const button = {
+  flex: 1,
+  border: '1px solid rgb(238, 238, 238)',
+  margin: 0,
+  padding: 12,
+  borderRadius: 6,
+  cursor: 'pointer',
+  background: 'rgb(255,255,255)',
+  color: 'rgb(0,0,10)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: 12,
+  transition: 'background 0.1s',
+  hover: {
+    background: 'rgb(240,240,240)'
+  }
+}
+
+export const buttonPrimary = {
+  background: 'linear-gradient(to right top, rgb(120, 70, 234), rgb(36, 135, 248)), rgb(36, 135, 248)',
+  color: 'rgb(255, 255, 255)',
+  transition: 'filter 0.1s',
+  hover: {
+    filter: 'brightness(1.1)'
+  }
+}
+
+export const buttonDisabled = {
+  opacity: 0.8,
+  hover: { filter: 'none' }
+}
+
+export const modal = {
+  padding: 24,
+  background: '#ffffff',
+  width: 'calc(100vw - 32px - 24px)',
+  maxWidth: 380,
+  borderRadius: 8
+}
+
+export const input = {
+  display: 'block',
+  padding: 12,
+  borderRadius: 6,
+  marginTop: 6,
+  border: '1px solid #eee',
+  width: 'calc(100% - 26px)'
 }

@@ -10,7 +10,7 @@ import {
 
 const defaultRouteStyle = `
   .route {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -53,15 +53,14 @@ class AnimatedRouter extends Component {
   componentWillMount () {
   }
   render () {
-    console.log(this.props.children)
     return (
       <div>
         <style>{this.props.routerStyle || defaultRouteStyle}</style>
-        <Router>
+        <Router ref='router'>
           <Route
             render={({ location }) => (
               <TransitionGroup>
-                {this.props.statics && this.props.statics.map(child => <Route component={child} />)}
+                {this.props.statics && this.props.statics.map(child => <Route key={child.name} component={child} />)}
                 <CSSTransition
                   key={location.key}
                   classNames='route'
@@ -71,6 +70,7 @@ class AnimatedRouter extends Component {
                     {this.props.routes.map(route => <Route
                       exact={route.exact === true}
                       path={route.path || '/'}
+                      key={route.path}
                       component={route.component || <div />}
                     />)}
                     <Route render={() => (this.props.notfound || <div className='route'><Link to='/'>Go Home</Link></div>)} />

@@ -6,14 +6,20 @@ class Image extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      loaded: false
+      loaded: false,
+      ploaded: false
     }
 
     this.onLoad = this.onLoad.bind(this)
+    this.PonLoad = this.PonLoad.bind(this)
   }
 
   onLoad () {
     this.setState({ loaded: true })
+  }
+
+  PonLoad () {
+    this.setState({ ploaded: true })
   }
 
   render () {
@@ -23,13 +29,15 @@ class Image extends Component {
       <div style={{ ...styles.image, ...(this.props.style || {}) }}>
         <img style={{
           ...imageStyle,
-          ...(this.state.loaded && loadedStyle)
-        }} src={this.props.src || ''} onLoad={this.onLoad} />
+          ...(this.state.loaded && loadedStyle),
+          ...this.props.imageStyle
+        }} src={this.state.ploaded || !this.props.thumbnail ? (this.props.src || '') : ''} onLoad={this.onLoad} />
         <img style={{
           ...imageStyle,
           ...(this.state.loaded && loadedStyle),
-          ...{ opacity: (this.state.loaded ? 0 : 1) }
-        }} src={this.props.thumbnail || ''} />
+          ...{ opacity: this.state.ploaded ? (this.state.loaded ? 0 : 1) : 0 },
+          ...this.props.thumbnailStyle
+        }} src={this.props.thumbnail || ''} onLoad={this.PonLoad} />
         {this.props.children}
       </div>
     )
